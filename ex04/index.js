@@ -13,6 +13,7 @@ module.exports.initModel = async sequelize => {
         }
     })  
     User.hasMany(Product);
+    
     await sequelize.sync({force:true});
     return { User, Product }
 } 
