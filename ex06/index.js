@@ -4,15 +4,11 @@ module.exports.createToken = token => {
     if (ary.length !== 3) {
         return
     }
-
+    //暗号：贪心算法
     return {
         getExp: () => {
-            // ##BEGIN## 代码已加密
-JEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHOSJOEEOESOEIOEAJEHOEPOOIOPPOEJOEEOOIOSOJEHJXIJEHJASOJSJAIJAXJHOOEPOOIOEXOEIOSSJPPOESOSSOPSJEHJIEOPJOSEOSEOSSOEXJHOOSEOEXOEEOEOJPPOOIOEXOPPOOOJHPOOEJPAJEHJPEOOAOOIOEIOSSJXJJHIJPEJPHJPH
-JEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHJEHOEXOSSOEAOPJOEXOESJEHOEPOOIOPPOEJOEEOOIOSOJHOOSSOPEOEP
-            // ##END##
+            return JSON.parse(atob(ary[1])).exp;
         },
-
         verify: key => {
             const hmac = crypto.createHmac('SHA256', key).update(ary[0]+ '.' +  ary[1]).digest('base64');
             return hmac === ary[2] + '='
